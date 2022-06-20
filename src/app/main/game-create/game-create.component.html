@@ -1,0 +1,41 @@
+<section class="section-container">
+  <div>
+    <h3 class="section-header">New Game</h3>
+    <form [formGroup]="gameForm">
+      <div>
+        <input class="input-{{gameForm.get('name')?.invalid ? 'error' : 'success'}}" formControlName="name" placeholder="Name">
+        <div class="input-alert" *ngIf="gameForm.get('name')?.invalid && (gameForm.get('name')?.dirty || gameForm.get('name')?.touched)">
+          Please provide a name.
+        </div>
+      </div>
+
+      <div>
+        <input class="input-{{gameForm.get('bundle')?.invalid ? 'error' : 'success'}}" formControlName="bundle" placeholder="Bundle">
+        <div class="input-alert" *ngIf="gameForm.get('bundle')?.invalid && (gameForm.get('bundle')?.dirty || gameForm.get('bundle')?.touched)">
+          Please provide a bundle.
+        </div>
+      </div>
+
+      <div>
+        <input class="input-{{gameForm.get('owner')?.invalid ? 'error' : 'success'}}" formControlName="owner" placeholder="Owner">
+        <div class="input-alert" *ngIf="gameForm.get('owner')?.invalid && (gameForm.get('owner')?.dirty || gameForm.get('owner')?.touched)">
+          Please provide a owner.
+        </div>
+      </div>
+
+      <div>
+        <input
+          id="image"
+          type="file"
+          (change)="onFileChange($event)">
+        <div class="input-alert" *ngIf="gameForm.get('image')?.invalid && (gameForm.get('image')?.dirty || gameForm.get('image')?.touched)">
+          Please provide a image.
+        </div>
+      </div>
+
+      <button class="form-button" (click)="onSubmit()" [disabled]="gameForm.invalid">
+        Add Game
+      </button>
+    </form>
+  </div>
+</section>

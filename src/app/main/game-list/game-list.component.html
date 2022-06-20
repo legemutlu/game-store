@@ -1,0 +1,13 @@
+<h3 class="section-header">Game List</h3>
+<div class="section-div">
+  <input class="section-search" placeholder="Search"/>
+  <a href="/create" class="section-button">New Game</a>
+</div>
+<section class="section-card" *ngIf="games && games.length > 0; else noGames">
+  <div *ngFor="let game of games">
+    <app-game-card [data]="game"></app-game-card>
+  </div>
+</section>
+<ng-template #noGames>
+  <span>There is no game</span>
+</ng-template>
